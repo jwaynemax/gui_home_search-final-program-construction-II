@@ -1,4 +1,4 @@
-package edu.westga.cs6312;
+package edu.westga.cs6312.Main;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
