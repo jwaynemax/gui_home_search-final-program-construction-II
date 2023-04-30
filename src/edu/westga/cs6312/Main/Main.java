@@ -7,13 +7,17 @@ import java.text.ParseException;
 import edu.westga.cs6312.Model.Home;
 import edu.westga.cs6312.Service.DataService;
 import javafx.application.Application;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
@@ -31,6 +35,10 @@ public class Main extends Application {
 	private TextField sqft = new TextField();
 	private TextField minPrice = new TextField();
 	private TextField maxPrice = new TextField();
+	private Button executeSearch = new Button("Execute Search");
+	private Button outputSearch = new Button("Output Results");
+	private Text outputResults = new Text();
+
 	
 
 	public static void main(String[] args)
@@ -97,10 +105,20 @@ public class Main extends Application {
 	    form.add(new Label("Maximum Price:"), 0, 9);
 	    form.add(this.maxPrice, 1, 9);
 	    //form.add(this.expectedReturnError, 2, 9);
+	    form.add(this.executeSearch, 0, 10);
+	    form.add(this.outputSearch, 1, 10);
 	    
+	    //Output results to GUI
+	    this.outputResults.setText(DataService.readHomeJSON()[999].toString() + "\n" + String.valueOf(DataService.readHomeJSON()[999]));  
+	    ScrollPane scrollPane = new ScrollPane(this.outputResults);
+	    scrollPane.setPrefSize(300, 300);
+	    form.add(scrollPane, 0, 11, 2, 2);
+	    
+	    //align form in BorderPane
 	    form.setAlignment(Pos.CENTER);
 		root.setCenter(form);
 		
+		//Set and initiate scene
 		Scene mainScene = new Scene(root);
 		primaryStage.setTitle("Home Search by Justin Maxwell");
 		primaryStage.setScene(mainScene);
