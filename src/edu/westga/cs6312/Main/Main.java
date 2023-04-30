@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.text.ParseException;
 
 import edu.westga.cs6312.Model.Home;
+import edu.westga.cs6312.Model.Sorting;
 import edu.westga.cs6312.Service.DataService;
 import javafx.application.Application;
 import javafx.geometry.Insets;
@@ -76,8 +77,8 @@ public class Main extends Application {
 	    form.add(new Label("Select filter:"), 0, 0);
 	    
 	    ComboBox<String> cbo = new ComboBox<>();
-	    cbo.getItems().addAll("City", "State", "Zip", "Bedroom", "Bathroom", "Square Feet", "Minimum Price", "Maximum Price");
-	    cbo.setValue("City");
+	    cbo.getItems().addAll("City, State, Zip", "Bedroom, Bathroom", "Square Feet", "Minimum Price, Maximum Price");
+	    cbo.setValue("City, State, Zip");
 	    form.add(cbo, 1, 0);
 	    
 	    form.add(new Label("Enter filter criteria:"), 0, 1);
@@ -109,7 +110,7 @@ public class Main extends Application {
 	    form.add(this.outputSearch, 1, 10);
 	    
 	    //Output results to GUI
-	    this.outputResults.setText(DataService.readHomeJSON()[999].toString() + "\n" + String.valueOf(DataService.readHomeJSON()[999]));  
+	    //this.outputResults.setText(DataService.readHomeJSON()[999].toString() + "\n" + String.valueOf(DataService.readHomeJSON()[999]));  
 	    ScrollPane scrollPane = new ScrollPane(this.outputResults);
 	    scrollPane.setPrefSize(300, 300);
 	    form.add(scrollPane, 0, 11, 2, 2);
@@ -117,6 +118,8 @@ public class Main extends Application {
 	    //align form in BorderPane
 	    form.setAlignment(Pos.CENTER);
 		root.setCenter(form);
+		
+		this.executeSearch.setOnAction(e -> this.outputResults.setText(Sorting.test()));
 		
 		//Set and initiate scene
 		Scene mainScene = new Scene(root);
