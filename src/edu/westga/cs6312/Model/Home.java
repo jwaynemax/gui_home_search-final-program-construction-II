@@ -22,7 +22,7 @@ public class Home {
 	private double price;
 
 	/**
-	 * Contructor for Home
+	 * Constructor for Home
 	 * 
 	 * @param streetAddress
 	 * @param streetSuffix

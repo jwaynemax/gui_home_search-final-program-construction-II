@@ -152,11 +152,12 @@ public class Main extends Application {
 		});
 
 		// Set and initiate scene
+		root.setStyle("-fx-background-color: tan;");
+		header.setStyle("-fx-fill: white;");
 		Scene mainScene = new Scene(root);
 		primaryStage.setTitle("Home Search by Justin Maxwell");
 		primaryStage.setScene(mainScene);
 		primaryStage.show();
-
 	}
 	
 
