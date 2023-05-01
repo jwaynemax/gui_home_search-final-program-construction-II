@@ -49,7 +49,8 @@ public class Home {
 
 	/**
 	 * Get street address
-	 * 
+	 * @precondition none
+	 * @postcondition none
 	 * @return the streetAddress
 	 */
 	public String getStreetAddress() {
@@ -58,16 +59,24 @@ public class Home {
 
 	/**
 	 * Set Street Address
-	 * 
+	 * @precondition parameter cannot be empty or null
+	 * @postcondition none
 	 * @param streetAddress the streetAddress to set
 	 */
 	public void setStreetAddress(String streetAddress) {
+		
+		
+		if (streetAddress.equals(null) || streetAddress.isEmpty()) {
+			throw new IllegalArgumentException("Cannot be null or empty.");
+		}
+		
 		this.streetAddress = streetAddress;
 	}
 
 	/**
 	 * Get street suffix
-	 * 
+	 * @precondition none
+	 * @postcondition none
 	 * @return the streetSuffix
 	 */
 	public String getStreetSuffix() {
@@ -76,16 +85,23 @@ public class Home {
 
 	/**
 	 * Set street suffix
-	 * 
+	 * @precondition parameter cannot be empty or null
+	 * @postcondition none
 	 * @param streetSuffix the streetSuffix to set
 	 */
 	public void setStreetSuffix(String streetSuffix) {
+		
+		if (streetSuffix.equals(null) || streetSuffix.isEmpty()) {
+			throw new IllegalArgumentException("Cannot be null or empty.");
+		}
+		
 		this.streetSuffix = streetSuffix;
 	}
 
 	/**
 	 * Get city
-	 * 
+	 * @precondition none
+	 * @postcondition none
 	 * @return the city
 	 */
 	public String getCity() {
@@ -94,16 +110,23 @@ public class Home {
 
 	/**
 	 * Set city
-	 * 
+	 * @precondition parameter cannot be empty or null
+	 * @postcondition none
 	 * @param city the city to set
 	 */
 	public void setCity(String city) {
+		
+		if (city.equals(null) || city.isEmpty()) {
+			throw new IllegalArgumentException("Cannot be null or empty.");
+		}
+		
 		this.city = city;
 	}
 
 	/**
 	 * Get state
-	 * 
+	 * @precondition none
+	 * @postcondition none
 	 * @return the state
 	 */
 	public String getState() {
@@ -112,16 +135,23 @@ public class Home {
 
 	/**
 	 * Set state
-	 * 
+	 * @precondition parameter cannot be empty or null
+	 * @postcondition none
 	 * @param state the state to set
 	 */
 	public void setState(String state) {
+		
+		if (state.equals(null) || state.isEmpty()) {
+			throw new IllegalArgumentException("Cannot be null or empty.");
+		}
+		
 		this.state = state;
 	}
 
 	/**
 	 * Get zip
-	 * 
+	 * @precondition none
+	 * @postcondition none
 	 * @return the zip
 	 */
 	public String getZip() {
@@ -130,16 +160,23 @@ public class Home {
 
 	/**
 	 * Set zip
-	 * 
+	 * @precondition parameter cannot be empty or null
+	 * @postcondition none
 	 * @param zip the zip to set
 	 */
 	public void setZip(String zip) {
+		
+		if (zip.equals(null) || zip.isEmpty()) {
+			throw new IllegalArgumentException("Cannot be null or empty.");
+		}
+		
 		this.zip = zip;
 	}
 
 	/**
 	 * Get bedroom
-	 * 
+	 * @precondition none
+	 * @postcondition none
 	 * @return the bedroom
 	 */
 	public int getBedroom() {
@@ -148,16 +185,23 @@ public class Home {
 
 	/**
 	 * Set bedroom
-	 * 
+	 * @precondition parameter cannot be negative
+	 * @postcondition none
 	 * @param bedroom the bedroom to set
 	 */
 	public void setBedroom(int bedroom) {
+		
+		if (bedroom < 0) {
+			throw new IllegalArgumentException("Cannot be negative.");
+		}
+		
 		this.bedroom = bedroom;
 	}
 
 	/**
 	 * Get bathroom
-	 * 
+	 * @precondition none
+	 * @postcondition none
 	 * @return the bathroom
 	 */
 	public int getBathroom() {
@@ -166,16 +210,23 @@ public class Home {
 
 	/**
 	 * Set bathroom
-	 * 
+	 * @precondition parameter cannot be negative
+	 * @postcondition none
 	 * @param bathroom the bathroom to set
 	 */
 	public void setBathroom(int bathroom) {
+		
+		if (bathroom < 0) {
+			throw new IllegalArgumentException("Cannot be negative.");
+		}
+		
 		this.bathroom = bathroom;
 	}
 
 	/**
 	 * Get sqft
-	 * 
+	 * @precondition none
+	 * @postcondition none
 	 * @return the sqft
 	 */
 	public int getSqft() {
@@ -184,16 +235,23 @@ public class Home {
 
 	/**
 	 * Set sqft
-	 * 
+	 * @precondition parameter cannot be negative
+	 * @postcondition none
 	 * @param sqft the sqft to set
 	 */
 	public void setSqft(int sqft) {
+		
+		if (sqft < 0) {
+			throw new IllegalArgumentException("Cannot be negative.");
+		}
+		
 		this.sqft = sqft;
 	}
 
 	/**
 	 * Get price
-	 * 
+	 * @precondition none
+	 * @postcondition none
 	 * @return the price
 	 */
 	public double getPrice() {
@@ -202,10 +260,16 @@ public class Home {
 
 	/**
 	 * Set price
-	 * 
+	 * @precondition parameter cannot be negative
+	 * @postcondition none
 	 * @param price the price to set
 	 */
 	public void setPrice(double price) {
+		
+		if (price < 0) {
+			throw new IllegalArgumentException("Cannot be negative.");
+		}
+		
 		this.price = price;
 	}
 
