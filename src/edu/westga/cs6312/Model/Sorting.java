@@ -18,11 +18,12 @@ import edu.westga.cs6312.Service.DataService;
 public class Sorting {
 	
 	public static String searchCityStateZip(String city, String state, String zip) throws FileNotFoundException, IOException, ParseException {		
+		//Bubble sort
 		System.out.println("Search executed...");
-		
+				
 		int count = 0;
 		for (int i = 0; i <= DataService.readHomeJSON().length - 1; i++) {
-			if (DataService.readHomeJSON()[i].getCity().equals(city) || DataService.readHomeJSON()[i].getState().equals(state) || DataService.readHomeJSON()[i].getZip().equals(zip)) {
+			if (DataService.readHomeJSON()[i].getCity().toLowerCase().equals(city.toLowerCase()) || DataService.readHomeJSON()[i].getState().toLowerCase().equals(state.toLowerCase()) || DataService.readHomeJSON()[i].getZip().toLowerCase().equals(zip.toLowerCase())) {
 				count++;
 			}
 		}
@@ -30,7 +31,7 @@ public class Sorting {
 		Home[] homes = new Home[count];
 		int filler = 0;
 		for (int i = 0; i <= DataService.readHomeJSON().length - 1; i++) {
-			if (DataService.readHomeJSON()[i].getCity().equals(city) || DataService.readHomeJSON()[i].getState().equals(state) || DataService.readHomeJSON()[i].getZip().equals(zip)) {
+			if (DataService.readHomeJSON()[i].getCity().toLowerCase().equals(city.toLowerCase()) || DataService.readHomeJSON()[i].getState().toLowerCase().equals(state.toLowerCase()) || DataService.readHomeJSON()[i].getZip().toLowerCase().equals(zip.toLowerCase())) {
 				homes[filler] = DataService.readHomeJSON()[i];
 				filler++;
 			}
@@ -46,9 +47,7 @@ public class Sorting {
     			}
     		}
     	}
-		
-        System.out.println(homes.length);
-        
+		        
         String output = "";
         
         if (homes.length == 0)  {
