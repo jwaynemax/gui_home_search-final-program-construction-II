@@ -3,10 +3,13 @@
  */
 package edu.westga.cs6312.Service;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map;
 
@@ -18,6 +21,7 @@ import edu.westga.cs6312.Model.Home;
 
 /**
  * Read JSON data from home_data.java
+ * 
  * @author jm00724
  *
  */
@@ -42,9 +46,25 @@ public class DataService {
 			long bathrooms = (long) readHomesJson.get("bathrooms");
 			long sqft = (long) readHomesJson.get("sqft");
 			double price = (double) readHomesJson.get("price");
-			homes[i] = new Home(street_address, street_suffix, city, state, zip, (int) bedrooms, (int) bathrooms, (int) sqft, price);
+			homes[i] = new Home(street_address, street_suffix, city, state, zip, (int) bedrooms, (int) bathrooms,
+					(int) sqft, price);
 		}
 		return homes;
+	}
+	
+	public static void writeHomeJSONResults(ArrayList<String> homes) {
+		File file = new File("search_matches");
+		
+
+		try (PrintWriter output = new PrintWriter(file);) {
+			for (int index = 0; index < homes.size(); index++) {
+				output.println(homes.get(index));
+			}
+
+			output.close();
+		} catch (FileNotFoundException e) {
+			System.out.println(e.toString());
+		}
 	}
 
 }
