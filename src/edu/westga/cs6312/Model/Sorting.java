@@ -18,7 +18,7 @@ import edu.westga.cs6312.Service.DataService;
 public class Sorting {
 	
 	public static String searchCityStateZip(String city, String state, String zip) throws FileNotFoundException, IOException, ParseException {		
-		//Bubble sort
+		//Search
 		System.out.println("Search executed...");
 				
 		int count = 0;
@@ -37,6 +37,7 @@ public class Sorting {
 			}
 		}
 		
+		//Bubble sort
 		Home temp;
         for (int i = 1; i < homes.length; i++) {
     		for (int j = 0; j < homes.length - i; j++) {
@@ -47,6 +48,56 @@ public class Sorting {
     			}
     		}
     	}
+		        
+        String output = "";
+        
+        if (homes.length == 0)  {
+        	output = "No results found.";
+        } else if (homes.length > 20) {
+        	for (int i = 0; i < 20; i++) {
+    			output = output + "\n" + homes[i].toString();
+    		}
+        } else {
+        	for (int i = 0; i <= homes.length - 1; i++) {
+    			output = output + "\n" + homes[i].toString();
+    		}
+        }
+        
+        System.out.println("Search compelte");
+		
+		return output;
+	}
+	
+	public static String searchBedroomBathroom(int bedroom, int bathroom) throws FileNotFoundException, IOException, ParseException {		
+		//Search
+		System.out.println("Search executed...");
+				
+		int count = 0;
+		for (int i = 0; i <= DataService.readHomeJSON().length - 1; i++) {
+			if (DataService.readHomeJSON()[i].getBedroom() == bedroom && DataService.readHomeJSON()[i].getBathroom() == bathroom) {
+				count++;
+			}
+		}
+		
+		Home[] homes = new Home[count];
+		int filler = 0;
+		for (int i = 0; i <= DataService.readHomeJSON().length - 1; i++) {
+			if (DataService.readHomeJSON()[i].getBedroom() == bedroom && DataService.readHomeJSON()[i].getBathroom() == bathroom) {
+				homes[filler] = DataService.readHomeJSON()[i];
+				filler++;
+			}
+		}
+		
+		//Insertion Sort
+		for (int i = 1; i < homes.length; i++) {
+			Home currentElement = homes[i];
+			int j;
+			for (j = i - 1; j >= 0 && (homes[j].getStreetAddress().compareTo(currentElement.getStreetAddress()) > 0); j--) {
+				homes[j + 1] = homes[j];
+			}
+
+			homes[j + 1] = currentElement;
+		}
 		        
         String output = "";
         

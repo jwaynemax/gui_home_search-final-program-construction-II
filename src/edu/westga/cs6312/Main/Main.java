@@ -183,12 +183,14 @@ public class Main extends Application {
 		}
 		
 		if (this.cbo.getValue().equals("Bedroom, Bathroom")) {
+			int count = 0;
 			try {
 		    	Integer.parseInt(this.bedroom.getText());
 		    	this.bedroomError.setText("");
 		    } catch (NumberFormatException e) {
 		    	System.out.println("Bedroom is not a number.");
 		    	this.bedroomError.setText("Must be a number");
+		    	count++;
 		    }
 			
 			try {
@@ -197,7 +199,12 @@ public class Main extends Application {
 		    } catch (NumberFormatException e) {
 		    	System.out.println("Bathroom is not a number.");
 		    	this.bathroomError.setText("Must be a number");
+		    	count++;
 		    }
+			
+			if (count == 0) {
+				this.outputResults.setText(Sorting.searchBedroomBathroom(Integer.parseInt(this.bedroom.getText()), Integer.parseInt(this.bathroom.getText())));
+			}
 		}
 		
 		
