@@ -27,6 +27,12 @@ import javafx.scene.text.Text;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
+/**
+ * Execute Main & JavaFX
+ * 
+ * @author jm00724
+ * @version 5/1/23
+ */
 public class Main extends Application {
 	private TextField city = new TextField();
 	private TextField state = new TextField();
@@ -118,6 +124,7 @@ public class Main extends Application {
 		form.setAlignment(Pos.CENTER);
 		root.setCenter(form);
 
+		//execute search -- validate first
 		this.executeSearch.setOnAction(e -> {
 			try {
 				this.validate();
@@ -133,6 +140,7 @@ public class Main extends Application {
 			}
 		});
 		
+		//execute output search results -- check that search has happened first
 		this.outputSearch.setOnAction(e -> { 
 			if (!this.outputResults.getText().isEmpty()) {
 				ArrayList<String> list = new ArrayList<>(Arrays.asList(this.outputResults.getText().split("\n")));
@@ -150,7 +158,14 @@ public class Main extends Application {
 		primaryStage.show();
 
 	}
+	
 
+	/**
+	 * Validate user inputs and call search and sorting methods
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 * @throws org.json.simple.parser.ParseException
+	 */
 	private void validate() throws FileNotFoundException, IOException, org.json.simple.parser.ParseException {
 
 		this.cityError.setText("");

@@ -14,10 +14,21 @@ import edu.westga.cs6312.Service.DataService;
  * Perform search and sorting operations
  * 
  * @author jm00724
- *
+ * @version 5/1/23
  */
 public class Sorting {
+	
 
+	/**
+	 * search city or state or zip and sort using bubble sorting
+	 * @param city
+	 * @param state
+	 * @param zip
+	 * @return
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 * @throws ParseException
+	 */
 	public static String searchCityStateZip(String city, String state, String zip)
 			throws FileNotFoundException, IOException, ParseException {
 		// Search
@@ -74,6 +85,15 @@ public class Sorting {
 		return output;
 	}
 
+	/**
+	 * Search bedroom AND bathroom and sort using insertion sorting
+	 * @param bedroom
+	 * @param bathroom
+	 * @return
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 * @throws ParseException
+	 */
 	public static String searchBedroomBathroom(int bedroom, int bathroom)
 			throws FileNotFoundException, IOException, ParseException {
 		// Search
@@ -128,6 +148,14 @@ public class Sorting {
 		return output;
 	}
 
+	/**
+	 * Search square foot and sort using bubble sorting
+	 * @param sqft
+	 * @return
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 * @throws ParseException
+	 */
 	public static String searchSqFt(int sqft) throws FileNotFoundException, IOException, ParseException {
 		// Search
 		System.out.println("Search executed...");
@@ -179,6 +207,15 @@ public class Sorting {
 		return output;
 	}
 
+	/**
+	 * Search between min and max price and sort using insertion sorting
+	 * @param minPrice
+	 * @param maxPrice
+	 * @return
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 * @throws ParseException
+	 */
 	public static String searchPrice(double minPrice, double maxPrice)
 			throws FileNotFoundException, IOException, ParseException {
 		// Search

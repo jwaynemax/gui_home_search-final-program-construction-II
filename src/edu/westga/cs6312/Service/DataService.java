@@ -8,10 +8,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Map;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -23,17 +20,29 @@ import edu.westga.cs6312.Model.Home;
  * Read JSON data from home_data.java
  * 
  * @author jm00724
- *
+ * @version 5/1/23
  */
 public class DataService {
+	
 
+	/**
+	 * Read home_data.json and save to array -- requires Json.simple jar
+	 * @return array of Homes read from home_data.json
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 * @throws org.json.simple.parser.ParseException
+	 */
 	public static Home[] readHomeJSON()
 			throws FileNotFoundException, IOException, org.json.simple.parser.ParseException {
 
+		//declare parser
 		JSONParser parser = new JSONParser();
 
+		//parse home_data.json
 		Object obj = parser.parse(new FileReader("home_data.json"));
+		//convert to array
 		JSONArray homesJson = (JSONArray) obj;
+		//save values to array
 		Home[] homes = new Home[homesJson.size()];
 		for (int i = 0; i < homesJson.size(); i++) {
 			JSONObject readHomesJson = (JSONObject) homesJson.get(i);
@@ -46,12 +55,17 @@ public class DataService {
 			long bathrooms = (long) readHomesJson.get("bathrooms");
 			long sqft = (long) readHomesJson.get("sqft");
 			double price = (double) readHomesJson.get("price");
+			//declare as Home object
 			homes[i] = new Home(street_address, street_suffix, city, state, zip, (int) bedrooms, (int) bathrooms,
 					(int) sqft, price);
 		}
 		return homes;
 	}
 	
+	/**
+	 * Write home search output to search_matches
+	 * @param homes
+	 */
 	public static void writeHomeJSONResults(ArrayList<String> homes) {
 		File file = new File("search_matches");
 		

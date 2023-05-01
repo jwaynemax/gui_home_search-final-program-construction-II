@@ -7,7 +7,7 @@ package edu.westga.cs6312.Model;
  * Define home
  * 
  * @author jm00724
- *
+ * @version 5/1/23
  */
 public class Home {
 
