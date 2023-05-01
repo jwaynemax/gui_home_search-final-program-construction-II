@@ -67,7 +67,7 @@ public class Main extends Application {
 		Screen screen = Screen.getPrimary();
 		Rectangle2D bounds = screen.getVisualBounds();
 		BorderPane root = new BorderPane();
-		root.setPrefSize(bounds.getWidth() / 2, bounds.getHeight());
+		root.setPrefSize(bounds.getWidth() * .75, bounds.getHeight());
 
 		// Set header
 		Text header = new Text("Home Search by Justin Maxwell");
