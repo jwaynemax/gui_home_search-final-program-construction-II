@@ -8,7 +8,6 @@ import edu.westga.cs6312.Model.Home;
 import edu.westga.cs6312.Model.Sorting;
 import edu.westga.cs6312.Service.DataService;
 import javafx.application.Application;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
@@ -18,7 +17,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
@@ -49,17 +47,8 @@ public class Main extends Application {
 	private Text minPriceError = new Text();
 	private Text maxPriceError = new Text();
 
-	
-
 	public static void main(String[] args)
-			throws FileNotFoundException, IOException, ParseException, org.json.simple.parser.ParseException {
-		Home home = new Home("123 Home", "Way", "Canton", "GA", "30000", 2, 3, 1200, 200000);
-
-		System.out.println(home.toString());
-
-		DataService.readHomeJSON();
-
-		System.out.println(DataService.readHomeJSON()[999].getCity());
+			throws FileNotFoundException, IOException, ParseException, org.json.simple.parser.ParseException {	
 
 		launch(args);
 	}
@@ -87,7 +76,7 @@ public class Main extends Application {
 	   
 	    
 	    this.cbo.getItems().addAll("City, State, Zip", "Bedroom, Bathroom", "Square Feet", "Minimum Price, Maximum Price");
-	    this.cbo.setValue("City, State, Zip");
+	    this.cbo.setValue("Minimum Price, Maximum Price");
 	    form.add(cbo, 1, 0);
 	    
 	    form.add(new Label("Enter filter criteria:"), 0, 1);
@@ -119,7 +108,6 @@ public class Main extends Application {
 	    form.add(this.outputSearch, 1, 10);
 	    
 	    //Output results to GUI
-	    //this.outputResults.setText(DataService.readHomeJSON()[999].toString() + "\n" + String.valueOf(DataService.readHomeJSON()[999]));  
 	    ScrollPane scrollPane = new ScrollPane(this.outputResults);
 	    scrollPane.setPrefSize(300, 300);
 	    form.add(scrollPane, 0, 11, 2, 2);
@@ -129,7 +117,20 @@ public class Main extends Application {
 		root.setCenter(form);
 		
 		//this.executeSearch.setOnAction(e -> this.outputResults.setText(Sorting.test()));
-		this.executeSearch.setOnAction(e -> this.validate());
+		this.executeSearch.setOnAction(e -> {
+			try {
+				this.validate();
+			} catch (FileNotFoundException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (org.json.simple.parser.ParseException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		});
 		
 		//Set and initiate scene
 		Scene mainScene = new Scene(root);
@@ -139,7 +140,7 @@ public class Main extends Application {
 
 	}
 	
-	private void validate() {
+	private void validate() throws FileNotFoundException, IOException, org.json.simple.parser.ParseException {
 		
 		this.cityError.setText("");
 		this.stateError.setText("");
@@ -151,9 +152,11 @@ public class Main extends Application {
 		this.maxPriceError.setText("");
 				
 		if (this.cbo.getValue() == "City, State, Zip") {
+			int count = 0;
 			if (this.city.getText().isEmpty()) {
 				this.cityError.setText("City cannot be empty");
 				System.out.println("City cannot be empty");
+				count++;
 			} else {
 				this.cityError.setText("");
 			}
@@ -161,6 +164,7 @@ public class Main extends Application {
 			if (this.state.getText().isEmpty()) {
 				this.stateError.setText("State cannot be empty");
 				System.out.println("State cannot be empty");
+				count++;
 			} else {
 				this.stateError.setText("");
 			}
@@ -168,8 +172,13 @@ public class Main extends Application {
 			if (this.zip.getText().isEmpty()) {
 				this.zipError.setText("Zip cannot be empty");
 				System.out.println("Zip cannot be empty");
+				count++;
 			} else {
 				this.zipError.setText("");
+			}
+			
+			if (count == 0) {
+				this.outputResults.setText(Sorting.searchCityStateZip(this.city.getText(), this.state.getText(), this.zip.getText()));
 			}
 		}
 		

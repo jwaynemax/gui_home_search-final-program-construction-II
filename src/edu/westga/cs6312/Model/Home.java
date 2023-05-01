@@ -4,7 +4,7 @@
 package edu.westga.cs6312.Model;
 
 /**
- * De
+ * Define home
  * @author jm00724
  *
  */
