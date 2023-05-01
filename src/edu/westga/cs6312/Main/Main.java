@@ -115,10 +115,11 @@ public class Main extends Application {
 		form.add(this.executeSearch, 0, 10);
 		form.add(this.outputSearch, 1, 10);
 
+		form.add(new Text("Search takes a few minutes to execute."), 0, 11);
 		// Output results to GUI
 		ScrollPane scrollPane = new ScrollPane(this.outputResults);
 		scrollPane.setPrefSize(300, 300);
-		form.add(scrollPane, 0, 11, 2, 2);
+		form.add(scrollPane, 0, 12, 2, 2);
 
 		// align form in BorderPane
 		form.setAlignment(Pos.CENTER);
