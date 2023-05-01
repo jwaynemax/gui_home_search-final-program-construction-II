@@ -17,6 +17,7 @@ import org.json.simple.parser.JSONParser;
 import edu.westga.cs6312.Model.Home;
 
 /**
+ * Read JSON data from home_data.java
  * @author jm00724
  *
  */

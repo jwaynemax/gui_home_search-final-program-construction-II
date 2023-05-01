@@ -11,6 +11,7 @@ import org.json.simple.parser.ParseException;
 import edu.westga.cs6312.Service.DataService;
 
 /**
+ * Perform search and sorting operations 
  * @author jm00724
  *
  */

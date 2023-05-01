@@ -77,11 +77,11 @@ public class Main extends Application {
 	    
 	    this.cbo.getItems().addAll("City, State, Zip", "Bedroom, Bathroom", "Square Feet", "Minimum Price, Maximum Price");
 	    this.cbo.setValue("Minimum Price, Maximum Price");
-	    form.add(cbo, 1, 0);
+	    form.add(this.cbo, 1, 0);
 	    
 	    form.add(new Label("Enter filter criteria:"), 0, 1);
 	    form.add(new Label("City:"), 0, 2);
-	    form.add(this.city, 1,2);
+	    form.add(this.city, 1, 2);
 	    form.add(this.cityError, 2, 2);
 	    form.add(new Label("State:"), 0, 3);
 	    form.add(this.state, 1, 3);
@@ -151,7 +151,7 @@ public class Main extends Application {
 		this.minPriceError.setText("");
 		this.maxPriceError.setText("");
 				
-		if (this.cbo.getValue() == "City, State, Zip") {
+		if (this.cbo.getValue().equals("City, State, Zip")) {
 			int count = 0;
 			if (this.city.getText().isEmpty()) {
 				this.cityError.setText("City cannot be empty");
@@ -182,7 +182,7 @@ public class Main extends Application {
 			}
 		}
 		
-		if (this.cbo.getValue() == "Bedroom, Bathroom") {
+		if (this.cbo.getValue().equals("Bedroom, Bathroom")) {
 			try {
 		    	Integer.parseInt(this.bedroom.getText());
 		    	this.bedroomError.setText("");
@@ -201,7 +201,7 @@ public class Main extends Application {
 		}
 		
 		
-		if (this.cbo.getValue() == "Square Feet") {
+		if (this.cbo.getValue().equals("Square Feet")) {
 			try {
 		    	Integer.parseInt(this.sqft.getText());
 		    	this.sqftError.setText("");
@@ -211,7 +211,7 @@ public class Main extends Application {
 		    }
 		}
 		
-		if (this.cbo.getValue() == "Minimum Price, Maximum Price") {
+		if (this.cbo.getValue().equals("Minimum Price, Maximum Price")) {
 			
 			try {
 		    	Double.parseDouble(this.minPrice.getText());
