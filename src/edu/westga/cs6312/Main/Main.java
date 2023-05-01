@@ -254,17 +254,18 @@ public class Main extends Application {
 
 		if (this.cbo.getValue().equals("Minimum Price, Maximum Price")) {
 			int count = 0;
+			String tempMinPrice = this.minPrice.getText().replace(",", "");
 			try {
-				Double.parseDouble(this.minPrice.getText());
+				Double.parseDouble(tempMinPrice);
 				this.minPriceError.setText("");
 			} catch (NumberFormatException e) {
 				System.out.println("Minumum Price is not a number.");
 				this.minPriceError.setText("Must be a number");
 				count++;
 			}
-
+			String tempMaxPrice = this.maxPrice.getText().replace(",", "");
 			try {
-				Double.parseDouble(this.maxPrice.getText());
+				Double.parseDouble(tempMaxPrice);
 				this.maxPriceError.setText("");
 			} catch (NumberFormatException e) {
 				System.out.println("Maximum Price is not a number.");
@@ -273,8 +274,8 @@ public class Main extends Application {
 			}
 
 			if (count == 0) {
-				this.outputResults.setText(Sorting.searchPrice(Double.parseDouble(this.minPrice.getText()),
-						Double.parseDouble(this.maxPrice.getText())));
+				this.outputResults.setText(Sorting.searchPrice(Double.parseDouble(tempMinPrice),
+						Double.parseDouble(tempMaxPrice)));
 			}
 		}
 	}
