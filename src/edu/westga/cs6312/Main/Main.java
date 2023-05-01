@@ -209,23 +209,30 @@ public class Main extends Application {
 		
 		
 		if (this.cbo.getValue().equals("Square Feet")) {
+			int count = 0;
 			try {
 		    	Integer.parseInt(this.sqft.getText());
 		    	this.sqftError.setText("");
 		    } catch (NumberFormatException e) {
 		    	System.out.println("Square Foot is not a number.");
 		    	this.sqftError.setText("Must be a number");
+		    	count++;
 		    }
+			
+			if (count == 0) {
+				this.outputResults.setText(Sorting.searchSqFt(Integer.parseInt(this.sqft.getText())));
+			}
 		}
 		
 		if (this.cbo.getValue().equals("Minimum Price, Maximum Price")) {
-			
+			int count = 0;
 			try {
 		    	Double.parseDouble(this.minPrice.getText());
 		    	this.minPriceError.setText("");
 		    } catch (NumberFormatException e) {
 		    	System.out.println("Minumum Price is not a number.");
 		    	this.minPriceError.setText("Must be a number");
+		    	count++;
 		    }
 			
 			try {
@@ -234,7 +241,12 @@ public class Main extends Application {
 		    } catch (NumberFormatException e) {
 		    	System.out.println("Maximum Price is not a number.");
 		    	this.maxPriceError.setText("Must be a number");
+		    	count++;
 		    }
+			
+			if (count == 0) {
+				this.outputResults.setText(Sorting.searchPrice(Double.parseDouble(this.minPrice.getText()), Double.parseDouble(this.maxPrice.getText())));
+			}
 		}
 	}
 
