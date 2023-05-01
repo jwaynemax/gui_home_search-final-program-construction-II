@@ -18,6 +18,8 @@ import edu.westga.cs6312.Service.DataService;
 public class Sorting {
 	
 	public static String searchCityStateZip(String city, String state, String zip) throws FileNotFoundException, IOException, ParseException {		
+		System.out.println("Search executed...");
+		
 		int count = 0;
 		for (int i = 0; i <= DataService.readHomeJSON().length - 1; i++) {
 			if (DataService.readHomeJSON()[i].getCity().equals(city) || DataService.readHomeJSON()[i].getState().equals(state) || DataService.readHomeJSON()[i].getZip().equals(zip)) {
@@ -45,6 +47,8 @@ public class Sorting {
     		}
     	}
 		
+        System.out.println(homes.length);
+        
         String output = "";
         
         if (homes.length == 0)  {
@@ -58,6 +62,8 @@ public class Sorting {
     			output = output + "\n" + homes[i].toString();
     		}
         }
+        
+        System.out.println("Search compelte");
 		
 		return output;
 	}
