@@ -33,23 +33,25 @@ public class Sorting {
 			throws FileNotFoundException, IOException, ParseException {
 		// Search
 		System.out.println("Search executed...");
+		
+		Home[] arr = DataService.readHomeJSON();
 
 		int count = 0;
-		for (int i = 0; i <= DataService.readHomeJSON().length - 1; i++) {
-			if (DataService.readHomeJSON()[i].getCity().toLowerCase().equals(city.toLowerCase())
-					|| DataService.readHomeJSON()[i].getState().toLowerCase().equals(state.toLowerCase())
-					|| DataService.readHomeJSON()[i].getZip().toLowerCase().equals(zip.toLowerCase())) {
+		for (int i = 0; i <= arr.length - 1; i++) {
+			if (arr[i].getCity().toLowerCase().equals(city.toLowerCase())
+					|| arr[i].getState().toLowerCase().equals(state.toLowerCase())
+					|| arr[i].getZip().toLowerCase().equals(zip.toLowerCase())) {
 				count++;
 			}
 		}
 
 		Home[] homes = new Home[count];
 		int filler = 0;
-		for (int i = 0; i <= DataService.readHomeJSON().length - 1; i++) {
-			if (DataService.readHomeJSON()[i].getCity().toLowerCase().equals(city.toLowerCase())
-					|| DataService.readHomeJSON()[i].getState().toLowerCase().equals(state.toLowerCase())
-					|| DataService.readHomeJSON()[i].getZip().toLowerCase().equals(zip.toLowerCase())) {
-				homes[filler] = DataService.readHomeJSON()[i];
+		for (int i = 0; i <= arr.length - 1; i++) {
+			if (arr[i].getCity().toLowerCase().equals(city.toLowerCase())
+					|| arr[i].getState().toLowerCase().equals(state.toLowerCase())
+					|| arr[i].getZip().toLowerCase().equals(zip.toLowerCase())) {
+				homes[filler] = arr[i];
 				filler++;
 			}
 		}
@@ -98,21 +100,23 @@ public class Sorting {
 			throws FileNotFoundException, IOException, ParseException {
 		// Search
 		System.out.println("Search executed...");
+		
+		Home[] arr = DataService.readHomeJSON();
 
 		int count = 0;
-		for (int i = 0; i <= DataService.readHomeJSON().length - 1; i++) {
-			if (DataService.readHomeJSON()[i].getBedroom() == bedroom
-					&& DataService.readHomeJSON()[i].getBathroom() == bathroom) {
+		for (int i = 0; i <= arr.length - 1; i++) {
+			if (arr[i].getBedroom() == bedroom
+					&& arr[i].getBathroom() == bathroom) {
 				count++;
 			}
 		}
 
 		Home[] homes = new Home[count];
 		int filler = 0;
-		for (int i = 0; i <= DataService.readHomeJSON().length - 1; i++) {
-			if (DataService.readHomeJSON()[i].getBedroom() == bedroom
-					&& DataService.readHomeJSON()[i].getBathroom() == bathroom) {
-				homes[filler] = DataService.readHomeJSON()[i];
+		for (int i = 0; i <= arr.length - 1; i++) {
+			if (arr[i].getBedroom() == bedroom
+					&& arr[i].getBathroom() == bathroom) {
+				homes[filler] = arr[i];
 				filler++;
 			}
 		}
@@ -159,19 +163,21 @@ public class Sorting {
 	public static String searchSqFt(int sqft) throws FileNotFoundException, IOException, ParseException {
 		// Search
 		System.out.println("Search executed...");
+		
+		Home[] arr = DataService.readHomeJSON();
 
 		int count = 0;
-		for (int i = 0; i <= DataService.readHomeJSON().length - 1; i++) {
-			if (DataService.readHomeJSON()[i].getSqft() == sqft) {
+		for (int i = 0; i <= arr.length - 1; i++) {
+			if (arr[i].getSqft() == sqft) {
 				count++;
 			}
 		}
 
 		Home[] homes = new Home[count];
 		int filler = 0;
-		for (int i = 0; i <= DataService.readHomeJSON().length - 1; i++) {
-			if (DataService.readHomeJSON()[i].getSqft() == sqft) {
-				homes[filler] = DataService.readHomeJSON()[i];
+		for (int i = 0; i <= arr.length - 1; i++) {
+			if (arr[i].getSqft() == sqft) {
+				homes[filler] = arr[i];
 				filler++;
 			}
 		}
@@ -220,21 +226,23 @@ public class Sorting {
 			throws FileNotFoundException, IOException, ParseException {
 		// Search
 		System.out.println("Search executed...");
+		
+		Home[] arr = DataService.readHomeJSON();
 
 		int count = 0;
-		for (int i = 0; i <= DataService.readHomeJSON().length - 1; i++) {
-			if (DataService.readHomeJSON()[i].getPrice() >= minPrice
-					&& DataService.readHomeJSON()[i].getPrice() <= maxPrice) {
+		for (int i = 0; i <= arr.length - 1; i++) {
+			if (arr[i].getPrice() >= minPrice
+					&& arr[i].getPrice() <= maxPrice) {
 				count++;
 			}
 		}
 
 		Home[] homes = new Home[count];
 		int filler = 0;
-		for (int i = 0; i <= DataService.readHomeJSON().length - 1; i++) {
-			if (DataService.readHomeJSON()[i].getPrice() >= minPrice
-					&& DataService.readHomeJSON()[i].getPrice() <= maxPrice) {
-				homes[filler] = DataService.readHomeJSON()[i];
+		for (int i = 0; i <= arr.length - 1; i++) {
+			if (arr[i].getPrice() >= minPrice
+					&& arr[i].getPrice() <= maxPrice) {
+				homes[filler] = arr[i];
 				filler++;
 			}
 		}
